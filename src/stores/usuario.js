@@ -4,10 +4,13 @@ import usuarioService from '../service/usuarioService'
 import {toast} from 'vue3-toastify'
 import { useAuth } from './auth'
 import { useRouter } from 'vue-router'
+import { useOpciones } from './opciones'
 
 export const useUsuario = defineStore('usuario', () => {
 
     const router = useRouter()
+    const Auth = useAuth()
+    const opciones = useOpciones()
 
     const usuario = ref({
         nombre: '',
@@ -17,11 +20,13 @@ export const useUsuario = defineStore('usuario', () => {
         contrasena: '',
     })
 
-    const Auth = useAuth()
+    const usuarios = ref([])
+
+
+
 
     const loginUsuario = async(data)=>{
         try{
-            // console.log(data)
             const loginRes = await usuarioService.loguearUsuario(data)
             console.log(loginRes.data.data.token)
             toast.success(loginRes.data.msg,{
@@ -42,19 +47,46 @@ export const useUsuario = defineStore('usuario', () => {
         }
     }
 
-    const ObtenerToken = () => {
-        if (localStorage.getItem('token')) {
-          token.value = localStorage.getItem('token')
+
+    const verUsuarios = async()=>{
+        try {
+        
+            const Usuarios = await usuarioService.obtenerUsuario()
+            
+            console.log(Usuarios)
+            usuarios.value = Usuarios.data.data
+        
+        } catch (error) {
+            toast.error(err.response.data.errorMensaje,{
+                position: toast.POSITION.TOP_CENTER,
+            });
+            console.log(err)
         }
-        toast.error('Loguese primero',{
-            position: toast.POSITION.TOP_CENTER,
-        });
-        return
     }
-    // usuario,
+    
+    const registrarUsuario = async(data)=>{
+        try{
+            const registerRes = await usuarioService.registrarUsuario(data)
+            console.log(registerRes.data)
+
+            toast.success(registerRes.data.message,{
+                position: toast.POSITION.TOP_CENTER,
+            });
+            opciones.handleInicioUsuario()
+
+        }catch(err){
+            toast.error('Documento Ya Registrado',{
+                position: toast.POSITION.TOP_CENTER,
+            });
+            console.log(err)
+        }
+    }
     return {
         usuario,
+        usuarios,
 
-        loginUsuario
+        loginUsuario,
+        verUsuarios,
+        registrarUsuario
     }
 })

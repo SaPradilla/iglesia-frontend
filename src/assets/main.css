@@ -7,5 +7,8 @@
 :root{
   --azul:#1EA1CA;
   --azul-mas-claro:rgb(93, 217, 255);
-  --azul-claro:rgba(137, 227, 255, 0.20) ;
+  --azul-claro:rgba(137, 227, 255, 0.187) ;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

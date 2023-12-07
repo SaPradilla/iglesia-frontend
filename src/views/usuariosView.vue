@@ -1,9 +1,8 @@
 <script setup>
  import navbar from '../components/navbar.vue'
- import registroTemplos from '../components/registroTemplos.vue';
- import templos from '../components/templos.vue';
  import { useOpciones } from '../stores/opciones';
-
+ import usuario from '../components/usuario.vue';
+ import RegistroCreyente from '../components/RegistroCreyente.vue'
  const Opciones = useOpciones()
 </script>
 
@@ -14,12 +13,10 @@
             <navbar/>
         </div>
 
-        <div class="contenedor-templos ">
-            
-            <div class="contenido-templos">
-                <templos v-if="Opciones.temploInicio"/>
-                <registroTemplos v-if="Opciones.registroTemplo"/>
-            </div>
+        <div class="contenedor-usuario ">
+            <usuario v-if="Opciones.usuarioInicio"/>
+            <RegistroCreyente v-if="Opciones.registroUsuario"/>
+          
         </div>
 
     </div>
@@ -39,7 +36,7 @@
     top: 0;
     /* text-align: left; */
 }
-.contenedor-templos{
+.contenedor-usuario{
     height: 100vh;
     width: 100%;
 

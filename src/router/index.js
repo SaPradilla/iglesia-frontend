@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import InicioVue from '../views/InicioView.vue'
 import AuthVue from '../views/authView.vue'
+import Templos from '../views/templosView.vue'
+import Usuarios from '../views/usuariosView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -17,7 +19,13 @@ const router = createRouter({
     {
       path: '/templos',
       name: 'Templos',
-      component: AuthVue,
+      component: Templos,
+      meta: { requireAuth: true },
+    },
+    {
+      path: '/usuarios',
+      name: 'Usuarios',
+      component: Usuarios,
       meta: { requireAuth: true },
     }
   ]
