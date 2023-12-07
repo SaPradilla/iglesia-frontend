@@ -10,15 +10,14 @@
     <div class="flex-row">
         <div class="flex min-h-screen flex-col w-56 justify-normal  ">
 
-            <div class="flex items-center  h-20 shadow-md">
+            <div class="flex items-center  h-20 ">
                 <h1 class="text-3xl font-bold uppercase text-left text-[#1EA1CA]">IGlESIA</h1>
             </div>
 
 
-            <ul 
-            
+            <ul
             class="flex flex-col justify-items-start text-left">
-                <li 
+                <li
                 @click="Opciones.handleTemploInicio"
                 class="">
                     <a href="#"
