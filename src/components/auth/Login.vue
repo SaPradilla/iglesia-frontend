@@ -4,8 +4,8 @@
     const Usuario = useUsuario()
 
     const usuarioData = ref({
-        documento:'',
-        contrasena:''
+        documento:'108756839',
+        contrasena:'sena123456'
     })
 
 </script>
@@ -46,24 +46,28 @@
         height: 40vh;
         width: 50vh;
         border-radius: 10px;
-        box-shadow: 0px 6px 9px -3px rgba(0,0,0,0.1);
+        box-shadow: 0px 15px 20px -3px rgba(0,0,0,0.1);
         
     }
     form{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 4vh;
     }
 
     input[type="text"],input[type="password"]{
-     
-        width: 20vh;
+        background-color: rgba(172, 172, 172, 0.259) ;
+        width: 30vh;
         padding: 15px;
         border-style: solid;
         border-color: var(--azul);
-        /* box-shadow: 0px 6px 9px -3px rgba(0,0,0,0.1); */
         border-radius: 10px;
         transition: all 0.2s ease-in;
+        outline-color: var(--azul);
+        box-shadow: 0px 15px 20px -3px rgba(0,0,0,0.3);
+
 
     }
     input[type="text"]:focus,input[type="password"]:focus{
@@ -85,7 +89,7 @@
 
     input[type="submit"]{
         background-color:var(--azul);
-        border: none;
+        /* border: none; */
         padding: 15px;
         width:20vh;
         border-radius: 43px;
